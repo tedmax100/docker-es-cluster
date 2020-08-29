@@ -1,0 +1,15 @@
+version: "3"
+services:
+  es-slave1:
+    container_name: es-slave1
+    image: elasticsearch:7.1.1
+    restart: always
+    ports:
+      - 9201:9200
+      - 9301:9300
+    volumes:
+      - ./conf/es-slave1.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+      - ./logs:/usr/share/elasticsearch/logs
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"

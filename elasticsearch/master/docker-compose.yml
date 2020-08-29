@@ -1,0 +1,17 @@
+version: "3"
+services:
+  es-master:
+    container_name: es-master
+    hostname: es-master
+    image: elasticsearch:7.1.1
+    restart: always
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./conf/es-master.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./data:/usr/share/elasticsearch/data
+      - ./logs:/usr/share/elasticsearch/logs
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+
